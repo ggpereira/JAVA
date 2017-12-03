@@ -1,5 +1,6 @@
 package sources;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Image;
 
 
@@ -12,7 +13,6 @@ public class Player {
 	private int lives;
 	Image img_player;
 	
-	
 	public Player()
 	{
 		x = WIDTH/2; 
@@ -21,6 +21,7 @@ public class Player {
 		rotation = 0;
 		score = new Score();
 		img_player = GameImage.loadImage(PATH);
+	
 	}
 	
 	public void setName(String name) {
@@ -55,6 +56,5 @@ public class Player {
 	public void draw() {
 		img_player.drawCentered(x, y);
 	}
-	
 	
 }

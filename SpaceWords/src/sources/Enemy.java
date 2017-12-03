@@ -2,9 +2,9 @@ package sources;
 
 import org.newdawn.slick.Color;
 
-public class Enemy {
+public class Enemy implements Comparable<Enemy>{
 	private float x, y, speedx, speedy, accelx, accely; 
-	private boolean destroyed;
+	private boolean destroyed, target;
 	private StringBuilder enemy;
 	private GameFont font;
 	
@@ -16,6 +16,7 @@ public class Enemy {
 		accelx = 1; 
 		accely = 1;
 		destroyed = false;
+		target = false;
 		enemy  = new StringBuilder(word);
 		font = new GameFont("resources/fonts/Exo.ttf", 16f);
 	}
@@ -33,7 +34,12 @@ public class Enemy {
 	}
 	
 	public void draw() {
-		font.getFont().drawString(x, y, enemy.toString(), Color.orange);
+		if(target == true) {
+			font.getFont().drawString(x, y, enemy.toString(), Color.orange);
+		}
+		else{
+			font.getFont().drawString(x, y, enemy.toString());
+		}
 	}
 	
 	public void hit() {
@@ -42,11 +48,39 @@ public class Enemy {
 		}
 	}
 	
+	public void isTarget() {
+		target = true;
+	}
+	
 	public boolean destroyed() {
 		if(enemy.length() == 0) {
 			destroyed = true;
+			target = false;
 		}
 		return destroyed;
+	}
+	
+	public String getEnemy() {
+		return enemy.toString();
+	}
+	
+	public float getY() {
+		return y;
+	}
+	
+	public float getX() {
+		return x;
+	}
+
+	@Override
+	public int compareTo(Enemy otherEnemy) {
+		if(this.y > otherEnemy.getY()) {
+			return -1;
+		}
+		if(this.y < otherEnemy.getY()) {
+			return 1;
+		}
+		return 0;
 	}
 	
 }

@@ -30,7 +30,7 @@ public class Score {
 	}
 	
 	public void draw() {
-		text.getFont().drawString(25, 25, points.toString(), Color.orange);
+		text.getFont().drawString(25, 25, String.format("%1$05d",points), Color.orange);
 	}
 	
 	

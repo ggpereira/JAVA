@@ -39,6 +39,7 @@ public class Game extends BasicGameState{
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		game_bg.move();
 		enemies.move();
+		enemies.selectTarget();
 	}
 
 

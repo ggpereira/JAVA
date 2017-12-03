@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.StreamTokenizer;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import sources.Enemy;
@@ -12,8 +13,8 @@ import sources.Enemy;
 public class EnemyLoader {
 	Collection<String> file1 = new ArrayList<String>();
 	Collection<String> file2 = new ArrayList<String>();
-	Collection<Enemy> enemies = new ArrayList<Enemy>();
-	Collection<Enemy> enemies2 = new ArrayList<Enemy>();
+	List<Enemy> enemies = new ArrayList<Enemy>();
+	List<Enemy> enemies2 = new ArrayList<Enemy>();
 	
 	public EnemyLoader() {
 		tokenizeFile1();
@@ -75,7 +76,7 @@ public class EnemyLoader {
 		}
 	}
 	
-	public Collection<Enemy> selectLoad(int n) {
+	public List<Enemy> selectLoad(int n) {
 		switch(n) {
 			case 0:
 				return enemies;
