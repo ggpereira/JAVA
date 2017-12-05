@@ -1,7 +1,9 @@
 package sources;
 
-import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Image;
+
+
+import data.Calculator;
 
 
 public class Player {
@@ -21,6 +23,8 @@ public class Player {
 		rotation = 0;
 		score = new Score();
 		img_player = GameImage.loadImage(PATH);
+		img_player.setCenterOfRotation(275, 680);
+		img_player.setRotation(270);
 	
 	}
 	
@@ -51,6 +55,11 @@ public class Player {
 		if(score.getPoints() >= 200) {
 			lives += 1;
 		}
+	}
+	
+	public void rotate(Enemy target) {
+		img_player.setRotation(Calculator.angle(x, y, target.getX(), target.getY()));
+		
 	}
 	
 	public void draw() {
