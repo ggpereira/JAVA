@@ -4,7 +4,7 @@ import org.newdawn.slick.Color;
 
 public class Enemy implements Comparable<Enemy>{
 	private float x, y, speedx, speedy, accelx, accely; 
-	private boolean destroyed, target;
+	private boolean target;
 	private StringBuilder enemy;
 	private GameFont font;
 	
@@ -15,17 +15,16 @@ public class Enemy implements Comparable<Enemy>{
 		this.y = y;
 		accelx = 1; 
 		accely = 1;
-		destroyed = false;
 		target = false;
 		enemy  = new StringBuilder(word);
 		font = new GameFont("resources/fonts/Exo.ttf", 16f);
 	}
 	
 	public void move() {
-		if(x < 250) {
+		if(x < 200) {
 			accelx = 1;
 		}
-		if(x > 300) {
+		if(x > 400) {
 			accelx = -1;
 		}
 		
@@ -43,22 +42,13 @@ public class Enemy implements Comparable<Enemy>{
 	}
 	
 	public void hit() {
-		if(!destroyed) {
-			enemy.deleteCharAt(0);
-		}
+		enemy.deleteCharAt(0);
 	}
 	
 	public void isTarget() {
 		target = true;
 	}
 	
-	public boolean destroyed() {
-		if(enemy.length() == 0) {
-			destroyed = true;
-			target = false;
-		}
-		return destroyed;
-	}
 	
 	public String getEnemy() {
 		return enemy.toString();
