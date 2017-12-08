@@ -1,9 +1,11 @@
 package sources;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Image;
 
 
 import data.Calculator;
+import data.KeyPressed;
 
 
 public class Player {
@@ -45,6 +47,14 @@ public class Player {
 	public void hit()
 	{
 		lives -= 1;
+	}
+	
+	public String shoot() {
+		String key = KeyPressed.getCharKey();
+		if(key.equals("vazio")) {
+			return key;
+		}
+		return "vazio";
 	}
 	
 	public int getLives() {

@@ -1,57 +1,43 @@
 package sources;
 
-import java.util.List;
-
-
 public class Target {
-	List <Enemy> enemies;
-	Enemy current_target = null;
+	Enemy target = null;
+	String key;
 	
-	public Target(List <Enemy> e) {
-		enemies = e;
+	public Target(Enemy e) {
+		target = e;
+		target.isTarget();
 	}
-	/*Select current enemy*/
-	public void setTarget(String key) {
-		for(Enemy current_enemy : enemies) {
-			if(current_enemy.getEnemy().substring(0, 1).equalsIgnoreCase(key)) {
-				current_enemy.isTarget();
-				current_enemy.hit();
-				current_target = current_enemy;
-				break;
-			}
-		}
+	
+	public void setKey(String key) {
+		this.key = key;
 	}
 	
 	public Enemy getTarget() {
-		return current_target;
+		return target;
 	}
 	
-	/*Destroy target*/
-	public void hitTarget(String key) {
-		if(!targetIsEmpty()) {
-			if(current_target.getEnemy().substring(0, 1).equalsIgnoreCase(key)) {
-				current_target.hit();
-			}
-		}
-	}
-
-	public boolean targetIsEmpty() {
-		System.out.println(current_target.getEnemy().length() + " " + current_target.getEnemy());
-		if(current_target.getEnemy().length() == 1) {
-			enemies.remove(current_target);
-			current_target = null;
+	public boolean targetSuccess() {
+		if(Character.toString(target.getEnemy().charAt(0)).equalsIgnoreCase(key)) {
 			return true;
+		}else {
+			return false;
 		}
-		return false;
 	}
 	
-	/*Verifies if a new enemy can be selected*/
-	public boolean nextTarget() {
-		if(current_target == null) {
+	public boolean isEmpty() {
+		if(target.getEnemy().length() == 0) {
 			return true;
+		}else {
+			return false;
 		}
-		return false;
 	}
-
+	
+	public void destroy() {
+		if(target.getEnemy().length() > 0) {
+			target.hit();
+		}
+	}
+	
 	
 }

@@ -8,7 +8,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.lwjgl.input.Mouse;
 
-
 import sources.GameFont;
 import sources.GameImage;
 
@@ -24,18 +23,15 @@ public class Menu extends BasicGameState{
 	public Menu(int MENU) {
 		
 	}
-
-
+	
+	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		 menu_bg = GameImage.loadImage("resources/img/bg_menu.png");
-		 menu_font = new GameFont("resources/fonts/INVASION2000.TTF", 30f);
-		
-	}
+		 menu_font = new GameFont("resources/fonts/INVASION2000.TTF", 30f);	}
 
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		menu_bg.draw();
-		
 		if((cursorX >= 222 && cursorX <= 309) && (cursorY >= 454 && cursorY <= 475)) {
 			menu_font.getFont().drawString(222, 218, "PLAY");
 			if(Mouse.isButtonDown(0)) {
