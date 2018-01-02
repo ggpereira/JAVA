@@ -14,7 +14,7 @@ public class MainClass
 		{
 			hanoi(disk-1, source, aux, dest);
 			System.out.println("Move to: " + source + " -> " + dest);
-			System.out.println("Discos: " + disk);
+			System.out.println("Disk: " + disk);
 			hanoi(disk-1, aux, dest, source);
 		}
 	}
